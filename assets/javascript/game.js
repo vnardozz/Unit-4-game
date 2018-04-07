@@ -1,17 +1,23 @@
 $(document).ready(function () {
 
-    var targetNumber = Math.floor(Math.random() * 50);
+    var targetNumber = Math.floor((Math.random() * 120) + 19);
     $("#number-to-guess").html(targetNumber);
     var gems = $("#gems");
     var counter = 0;
     var wins = 0;
     var losses = 0;
 
-    var userOptions = [ Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
     
+    var userOptions = [Math.floor((Math.random() * 12) + 1),
+        Math.floor((Math.random() * 12) + 1),
+        Math.floor((Math.random() * 12) + 1),
+        Math.floor((Math.random() * 12) + 1)
+    ];
+
+
     var imgArray = ["assets/images/blue-gem.png", "assets/images/green-gem.png", "assets/images/purple-gem.png", "assets/images/red-gem.png"]
 
-        
+
     for (var i = 0; i < userOptions.length; i++) {
         var imageCrystal = $(".img");
 
@@ -36,28 +42,36 @@ $(document).ready(function () {
         counter += crystalValue;
 
         $("#user-total").text(counter);
+       
 
-        if (counter === targetNumber) {
+         if (counter === targetNumber) {
             alert("You win!");
             wins++
             crystalValue = "";
-            targetNumber = Math.floor(Math.random() * 50);
-            $("#number-to-guess").html(targetNumber);
             counter = 0;
+            targetNumber = Math.floor((Math.random() * 120) + 19);
+            $("#number-to-guess").html(targetNumber);
+            // $("#user-total").html(counter)
+            document.getElementById("user-total").innerText = counter;
 
-            console.log(targetNumber)
+
+
 
         }
 
-        if (counter > targetNumber) {
+         if (counter > targetNumber) {
             alert("You lose!!");
             losses++
             counter = 0;
-            targetNumber = Math.floor(Math.random() * 50);
+            targetNumber = Math.floor((Math.random() * 120) + 19);
             $("#number-to-guess").html(targetNumber);
-
-            document.getElementById("user-total").html("fgouggfsg")
+            // $("#user-total").html(counter)
+            document.getElementById("user-total").innerText = counter;
         }
+    
+        
+
+         
 
 
         var html =
